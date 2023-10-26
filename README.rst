@@ -161,14 +161,16 @@ Reproduce the experiments
 
 
 
-	* the shuffled dataset (I suggest you use this dataset will also be the
-	  default path) so as to avoid another factor of randomness and to
-	  reproduce the results more correctly (it is the same as the original with the only
-	  the difference is that the emails have been shuffled and finally I have deleted some gaps that each 	           one had email at the beginning with sed).
 
-	* The output folders for LSTMs and RNNs created so that you don't have to
-	  perform step 2 (unless you want training to continue) just to see them
-	  learning curves and performance metrics.
+
+* the shuffled dataset (I suggest you use this dataset will also be the
+  default path) so as to avoid another factor of randomness and to
+  reproduce the results more correctly (it is the same as the original with the only
+  the difference is that the emails have been shuffled and finally I have deleted some gaps that each one had email at the beginning with sed).
+
+* The output folders for LSTMs and RNNs created so that you don't have to
+  perform step 2 (unless you want training to continue) just to see them
+  learning curves and performance metrics.
 
 
 
