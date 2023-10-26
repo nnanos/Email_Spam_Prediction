@@ -16,7 +16,7 @@ Module Description
 ============
 
 
-* Load_data_functions.py
+* **Load_data_functions.py**
 
 In this module there are functions required to load the dataset and
 preprocessing of it. The only pre-processing performed is that of conversion
@@ -49,7 +49,7 @@ small)
 		(we used packing).
 
 
-* Model.py
+* **Model.py**
 
 The Model class represents the architecture of the network. Two possibilities were implemented,
 a simple elman RNN and an LSTM which can be selected from input arguments.
@@ -71,7 +71,7 @@ for long time series. I also list the objective used for
 minimization.
 
 
-* train.py
+* **train.py**
 
 This module was implemented in order to train a recurrent neural network. The
 basic logic is described in the following steps:
@@ -97,7 +97,7 @@ basic logic is described in the following steps:
 
 
 
-* Evaluation.py
+* **Evaluation.py**
 This module was implemented for the purpose of error analysis of training and the evaluation
 of the algorithm on unknown data with the metrics **Recall**, **Precision** and **F1 score**.
 So it is intended for execution after train.py has been executed which has produced the network checkpoint which contains the state dicts and json which contains the network training log.
@@ -127,10 +127,6 @@ the following hyperparameters were used (with adam optimizer):
 
 In any case, the network parameters (weights) were frozen in the epoch with the best training and
 validation loss (best epoch). In the images below I present the results for each case (RNN or LSTM):
-
-	* Model Architecture
-	* Learning curve
-	* Evaluation Metrics
 
 
 
@@ -193,7 +189,7 @@ Reproduce the experiments
 * the shuffled dataset (I suggest you use this dataset will also be the
   default path) so as to avoid another factor of randomness and to
   reproduce the results more correctly (it is the same as the original with the only
-  the difference is that the emails have been shuffled and finally I have deleted some gaps that each one had email at the beginning with sed).
+  difference that the emails have been shuffled and finally I have deleted some gaps that each email had at the beginning with sed).
 
 * The output folders for LSTMs and RNNs created so that you don't have to
   perform step 2 (unless you want training to continue) just to see them
