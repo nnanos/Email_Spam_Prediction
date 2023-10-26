@@ -81,14 +81,15 @@ basic logic is described in the following steps:
 	#. Initialization of objects : Model,critireon,optimizer,scheduler
 
 	#. Model training: If in the arguments has been given a Path for the checkpoint.pth of a pretrained network with simillar architecture then the training continues otherwise it starts from the beginning. In
-each iteration of the training loop (epoch) the following functions in that order are executed:
+	   each iteration of the training loop (epoch) the following functions in that order are executed:
 
-		#. Forward pass in wich we feed the network with all training examples in mini-batches of 125 			   examples.
+		#. Forward pass in wich we feed the network with all training examples in mini-batches of 125 examples.
 
-		#. Backward pass in wich the Backpropagation algorithm is executed. More specifically it is 			   performed a gradient (of the loss function) calculation in terms of the network parameters 			   and then the weights are updated with that gradient.
+		#. Backward pass in wich the Backpropagation algorithm is executed. More specifically it is performed a gradient (of the loss function) calculation in terms of the network parameters 			   
+		   and then the weights are updated with that gradient.
 
 		#. Validation. After completing the previous two steps for all mini-batches
-		   we feed the model with a very small subset of the dataset which is not used for the training 		   phase and we calculate the error of the cost function ).
+		   we feed the model with a very small subset of the dataset which is not used for the training phase and we calculate the error of the cost function ).
 		   We use this method to do early stopping.
 
 		#. Finally, I save some dicts which contain information about the models state
@@ -115,7 +116,7 @@ the following hyperparameters were used (with adam optimizer):
 
 	* learning-rate = 0.001
 
-	* patience = 10 (For how many epochs to continue the training if the validation loss does not decrease 		  		 further)
+	* patience = 10 (For how many epochs to continue the training if the validation loss does not decrease further)
 
 	* batch_size = 125
 
@@ -124,34 +125,45 @@ the following hyperparameters were used (with adam optimizer):
 	* Dimensionality of state space = 128
 
 
-In any case, the network parameters were frozen in the epoch with the best training and
-validation loss (best epoch).
+In any case, the network parameters (weights) were frozen in the epoch with the best training and
+validation loss (best epoch). In the images below I present the results for each case (RNN or LSTM):
+
+	* Model Architecture
+	* Learning curve
+	* Evaluation Metrics
 
 
 
 * **vanilla RNN**
 
-
-.. Image:: /Images/RNN/Model_Arch.png
-
-
-.. Image:: /Images/RNN/Learning_curve.png
+	
+	* Model Architecture
+	.. Image:: /Images/RNN/Model_Arch.png
 
 
-.. Image:: /Images/RNN/Metrics.png
+	* Learning curve
+	.. Image:: /Images/RNN/Learning_curve.png
+
+
+
+	* Evaluation Metrics
+	.. Image:: /Images/RNN/Metrics.png
 
 
 
 * **LSTM**
 
-
-.. Image:: /Images/LSTM/Model_arch.png
-
-
-.. Image:: /Images/LSTM/Learning_curve.png
-
-
-.. Image:: /Images/LSTM/Metrics.png
+	
+	* Model Architecture
+	.. Image:: /Images/LSTM/Model_arch.png
+	
+	
+	* Learning curve
+	.. Image:: /Images/LSTM/Learning_curve.png
+	
+	
+	* Evaluation Metrics
+	.. Image:: /Images/LSTM/Metrics.png
 
 
 Reproduce the experiments
