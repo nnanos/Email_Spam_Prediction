@@ -79,21 +79,100 @@ basic logic is described in the following steps:
 
 	#. Initialization of objects : Model,critireon,optimizer,scheduler
 
-	#.
+	#. Model training: If in the arguments has been given a Path for the checkpoint.pth of a pretrained network with simillar architecture then the training continues otherwise it starts from the beginning. In
+each iteration of the training loop (epoch) the following functions in that order are executed:
+
+		#. Forward pass in wich we feed the network with all training examples in mini-batches of 125 			   examples.
+
+		#. Backward pass in wich the Backpropagation algorithm is executed. More specifically it is 			   performed a gradient (of the loss function) calculation in terms of the network parameters 			   and then the weights are updated with that gradient.
+
+		#. Validation. After completing the previous two steps for all mini-batches
+		   we feed the model with a very small subset of the dataset which is not used for the training 		   phase and we calculate the error of the cost function ).
+		   We use this method to do early stopping.
+
+		#. Finally, I save some dicts which contain information about the models state
+		   , the optimizer and the error of the epoch for trainning and validation.
+
 
 
 * Evaluation.py
+This module was implemented for the purpose of error analysis of training and the evaluation
+of the algorithm on unknown data with the metrics **Recall**, **Precision** and **F1 score**.
+So it is intended for execution after train.py has been executed which has produced the network checkpoint which contains the state dicts and json which contains the network training log.
+
+
 
 
 Experiments
 =============
 
+First we have to note that word embeddings were not pre-processed (all that was done was
+shuffle of emails initially) and that for all experiments (vanilla RNN k LSTM)
+the following hyperparameters were used (with adam optimizer):
+
+	* max-epochs = 140
+
+	* learning-rate = 0.001
+
+	* patience = 10 (For how many epochs to continue the training if the validation loss does not decrease 		  		 further)
+
+	* batch_size = 125
+
+	* Dimensionality of word embeddings = 300
+
+	* Dimensionality of state space = 128
+
+
+In any case, the network parameters were frozen in the epoch with the best training and
+validation loss (best epoch).
+
+
+
+* **vanilla RNN**
 
 
 
 
 
+* **LSTM**
+
+
+
+
+Reproduce the experiments
 ============
+
+::
+
+	pip install requierments.txt
+
+	python train.py 
+	“--Model_type” <RNN or LSTM> 
+	“--output” <the folder you want to save log for training and checkpoint>
+	“--model” <the path where the output folder of the pretrained model is located>
+	“--root” <the path where the training dataset is loacted>
+	(the last two args are optional in case you 1) want the training to continue and 2)
+	to set another path for the dataset with emails)
+
+	python evaluation.py
+	“--root” <the path where the testing dataset is loacted>
+	“--Model_type” <RNN or LSTM>
+	“--model” <the path where the output folder of the previous command is located>
+
+
+
+	* the shuffled dataset (I suggest you use this dataset will also be the
+	  default path) so as to avoid another factor of randomness and to
+	  reproduce the results more correctly (it is the same as the original with the only
+	  the difference is that the emails have been shuffled and finally I have deleted some gaps that each 	           one had email at the beginning with sed).
+
+	* The output folders for LSTMs and RNNs created so that you don't have to
+	  perform step 2 (unless you want training to continue) just to see them
+	  learning curves and performance metrics.
+
+
+
+
 
 Free software: MIT license
 ============
