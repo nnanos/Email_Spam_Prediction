@@ -60,7 +60,8 @@ again the probability is modeled in the same way as before but now we don't have
 the response of the linear level from the sigmoid because this is done in the calculation of the
 loss function ( BCEWithLogitsLoss() ) of pytorch. 
 
-	* IMAGE
+
+.. Image:: /Images/RNN_architecture.png
 
 
 The image above shows details of the architecture of the implemented NNs
@@ -131,12 +132,26 @@ validation loss (best epoch).
 * **vanilla RNN**
 
 
+.. Image:: /Images/RNN/Model_Arch.png
+
+
+.. Image:: /Images/RNN/Learning_curve.png
+
+
+.. Image:: /Images/RNN/Metrics.png
 
 
 
 * **LSTM**
 
 
+.. Image:: /Images/LSTM/Model_arch.png
+
+
+.. Image:: /Images/LSTM/Learning_curve.png
+
+
+.. Image:: /Images/LSTM/Metrics.png
 
 
 Reproduce the experiments
