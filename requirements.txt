@@ -1,0 +1,14 @@
+pandas
+numpy
+gensim
+torch
+matplotlib
+pytorch_model_summary
+sklearn
+json
+argparse
+pathlib
+random
+time
+pickle
+tqdm
